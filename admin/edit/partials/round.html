@@ -1,0 +1,134 @@
+<div class="page-header">
+  <div class="row">
+    <div class="medium-7 columns"><h1>Round - Edit Data</h1></div>
+    <div class="medium-2 columns"><select ng-model="roundOrder" style="margin-top:26px;" class="form-control"><option value="-roundId">Newest</option><option value="roundId">Oldest</option></select></div>
+    
+    <div class="medium-3 columns"><input type="text" id="roundSearchFieldNumber" class="form-control" ng-model="roundSearch.$" placeholder="Search" style="margin-top:25px;"></div>
+    
+  </div>
+</div> 
+
+
+
+
+<div ng-controller="RoundRowCtrl">
+  <button class="button tiny" ng-click="addRound()" style="margin-bottom:15px;">Add row</button>
+  <button class="button secondary tiny" onclick="filterRound()" ng-click="toggleStrict()">Filter Round</button>
+  <!-- Modal for auto-fill of round located in index.html because Foundation gets pissy about Angular loading routes -->
+  <button class="button tiny secondary right" onclick="$('#roundAutoFillConfirmation').foundation('reveal', 'open')">Auto-Fill</button>
+  
+  <div class="row">
+    <div class="medium-3 columns">
+      <input type="text" id="filterRoundField" class="form-control" size="5" ng-model="roundSearch.number" placeholder="Filter Round" style="margin-top:-15px;display:none">
+      <input type="checkbox" id="exactlyRound" ng-model="strict" hidden>
+      
+    </div>
+  </div>
+  <div class="tableWrap">
+      <table>
+        <tr style="font-weight: bold">
+          <td>Number</td>
+          <td>Red 1</td>
+          <td>Red 2</td>
+          <td>Red 3</td>
+          <td>Blue 1</td>
+          <td>Blue 2</td>
+          <td>Blue 3</td>
+          <td>Red Score</td>
+          <td>Blue Score</td>
+          <td>Notes</td>
+        </tr>
+        <tr ng-repeat="round in rounds  | filter:roundSearch:strict | orderBy:roundOrder | startFrom:currentPage*pageSize | limitTo:pageSize">
+          <td>
+            <!-- editable username (text with validation) -->
+            <span editable-text="round.number" e-style="width: 50px;" e-name="number" e-form="rowform" onbeforesave="checkName($data)" e-required>
+              {{ round.number || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable status (select-local) -->
+            <span editable-text="round.red1Number" e-class="teamCell" e-name="red1Number" e-form="rowform">
+              {{ round.red1Number || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable group (select-remote) -->
+            <span editable-text="round.red2Number" e-class="teamCell" e-name="red2Number" e-form="rowform">
+              {{ round.red2Number || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable group (select-remote) -->
+            <span editable-text="round.red3Number" e-class="teamCell" e-name="red3Number" e-form="rowform">
+              {{ round.red3Number || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable group (select-remote) -->
+            <span editable-text="round.blue1Number" e-class="teamCell" e-name="blue1Number" e-form="rowform">
+              {{ round.blue1Number || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable group (select-remote) -->
+            <span editable-text="round.blue2Number" e-class="teamCell" e-name="blue2Number" e-form="rowform">
+              {{ round.blue2Number || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable group (select-remote) -->
+            <span editable-text="round.blue3Number" e-class="teamCell" e-name="blue3Number" e-form="rowform">
+              {{ round.blue3Number || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable group (select-remote) -->
+            <span editable-text="round.scoreRed" e-style="width: 50px" e-name="scoreRed" e-form="rowform">
+              {{ round.scoreRed || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable group (select-remote) -->
+            <span editable-text="round.scoreBlue" e-style="width: 50px" e-name="scoreBlue" e-form="rowform">
+              {{ round.scoreBlue || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable group (select-remote) -->
+            <span editable-text="round.notes" e-style="width: 80px" e-name="notes" e-form="rowform">
+              <span ng-hide="round.notes">{{ round.notes || 'empty' }}</span>
+              <button type="button" ng-hide="!round.notes" class="button tiny" data-tooltip title="{{ round.notes || 'empty' }}"><i class="fi-clipboard-notes size-14"></i></button>
+            </span>
+            <span editable-text="round.roundId" style="display:none;" e-style="display:none;" e-name="roundId" e-form="rowform">
+              {{ round.roundId || 'empty' }}
+            </span>
+          </td>
+          <td style="white-space: nowrap">
+            <!-- form -->
+            <form editable-form name="rowform" onbeforesave="saveRound($data, round.id)" class="editSaveButtons" ng-show="rowform.$visible" shown="inserted == round">
+                  <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="button tiny">
+                    <i class="fi-x"></i>
+                  </button>
+                  <button type="submit" ng-disabled="rowform.$waiting" class="button tiny success">
+                    <i class="fi-check"></i>
+                  </button>
+            </form>
+            <div class="buttons" ng-show="!rowform.$visible">
+              <button class="button tiny" ng-click="rowform.$show()"><i class="fi-page-edit size-14"></i></button>
+              <button class="button alert tiny" ng-click="removeRound(rounds.length-$index-1,$index)"><i class="fi-trash size-14"></i></button>
+            </div>  
+          </td>
+        </tr>
+      </table>
+  </div>
+  <div class="pagination-centered">
+    <ul class="pagination">
+      <li class="arrow" ng-class="{unavailable:currentPage == 0}"><a href="" ng-click="changePage('prev')">&laquo;</a></li>
+      <li class="current"><a href="">Page {{currentPage+1}} of {{numberOfPages()}}</a></li>
+      <li class="arrow" ng-class="{unavailable:currentPage >= rounds.length/pageSize - 1}"><a href="" ng-click="changePage('next')">&raquo;</a></li>
+    </ul>
+    <div ng-show="!rounds">Loading...</div>
+  </div>
+  
+
+</div>

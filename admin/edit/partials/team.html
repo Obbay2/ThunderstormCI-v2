@@ -1,0 +1,105 @@
+<div class="page-header">
+  <div class="row">
+    <div class="medium-7 columns"><h1>Team - Edit Data</h1></div>
+    <div class="medium-2 columns"><select ng-model="teamOrder" style="margin-top:26px;" class="form-control"><option value="-teamNumber">Newest</option><option value="teamNumber">Oldest</option></select></div>
+    
+    <div class="medium-3 columns"><input type="text" id="teamSearchFieldNumber" class="form-control" ng-model="teamSearch.$" placeholder="Search" style="margin-top:25px;"></div>
+    
+  </div>
+</div> 
+
+
+
+
+<div ng-controller="TeamRowCtrl">
+  <button class="button tiny" ng-click="addTeam()" style="margin-bottom:15px;">Add row</button>
+  
+  <div class="tableWrap">
+      <table>
+        <tr style="font-weight: bold">
+          <td>Number</td>
+          <td>Name</td>
+          <td>School</td>
+          <td>Loaction</td>
+          <td>Leader</td>
+          <td>Founded</td>
+          <td>Notes</td>
+        </tr>
+        <tr ng-repeat="team in teams  | filter:teamSearch | orderBy:teamOrder | startFrom:currentPage*pageSize | limitTo:pageSize">
+          <td>
+            <!-- editable username (text with validation) -->
+            <span editable-text="team.teamNumber" e-style="width: 50px;" e-name="teamNumber" e-form="rowform" onbeforesave="checkName($data)" e-required>
+              {{ team.teamNumber || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable status (select-remote) -->
+            <span editable-text="team.teamName" e-class="team-input" e-name="teamName" e-form="rowform">
+              {{ team.teamName || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable group (select-remote) -->
+            <span editable-text="team.schoolName" e-class="team-input" e-name="schoolName" e-form="rowform">
+              {{ team.schoolName || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable group (select-remote) -->
+            <span editable-text="team.city" e-class="teamCell" e-name="city" e-form="rowform">
+              {{ team.city || 'empty' }},
+            </span>
+            <span editable-text="team.state" e-class="team-stateInput" e-name="state" e-form="rowform">
+              {{ team.state || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable group (select-remote) -->
+            <span editable-text="team.leaderFullName" e-class="team-input" e-name="leaderFullName" e-form="rowform">
+              {{ team.leaderFullName || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable group (select-remote) -->
+            <span editable-text="team.yearFounded" e-class="teamCell" e-name="yearFounded" e-form="rowform">
+              {{ team.yearFounded || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable group (select-remote) -->
+            <span editable-text="team.notes" e-style="width: 80px" e-name="notes" e-form="rowform">
+              <span ng-hide="team.notes">{{ team.notes || 'empty' }}</span>
+              <button type="button" ng-hide="!team.notes" class="button tiny" data-tooltip title="{{ team.notes || 'empty' }}"><i class="fi-clipboard-notes size-14"></i></button>
+            </span>
+            <span editable-text="team.teamId" style="display:none;" e-style="display:none;" e-name="teamId" e-form="rowform">
+              {{ team.teamId || 'empty' }}
+            </span>
+          </td>
+          <td style="white-space: nowrap">
+            <!-- form -->
+            <form editable-form name="rowform" onbeforesave="saveTeam($data, team.id)" class="editSaveButtons" ng-show="rowform.$visible" shown="inserted == team">
+                  <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="button tiny">
+                    <i class="fi-x"></i>
+                  </button>
+                  <button type="submit" ng-disabled="rowform.$waiting" class="button tiny success">
+                    <i class="fi-check"></i>
+                  </button>
+            </form>
+            <div class="buttons" ng-show="!rowform.$visible">
+              <button class="button tiny" ng-click="rowform.$show()"><i class="fi-page-edit size-14"></i></button>
+              <button class="button alert tiny" ng-click="removeTeam(teams.length-$index-1,$index)"><i class="fi-trash size-14"></i></button>
+            </div>  
+          </td>
+        </tr>
+      </table>
+  </div>
+  <div class="pagination-centered">
+    <ul class="pagination">
+      <li class="arrow" ng-class="{unavailable:currentPage == 0}"><a href="" ng-click="changePage('prev')">&laquo;</a></li>
+      <li class="current"><a href="">Page {{currentPage+1}} of {{numberOfPages()}}</a></li>
+      <li class="arrow" ng-class="{unavailable:currentPage >= teams.length/pageSize - 1}"><a href="" ng-click="changePage('next')">&raquo;</a></li>
+    </ul>
+  </div>
+  
+
+</div>

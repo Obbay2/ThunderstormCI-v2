@@ -1,0 +1,107 @@
+<div data-alert class="alert-box warning" ng-show="!newRobotId">
+  <h3 class="alert">STOP</h3>
+  <p>You must enter Robot Details only after <a href="#/robot">Robot</a></p>
+</div>
+
+<form action="submitRobot.json" method="post" name="robotDetailsCollection" id="robotDetailsCollection" ng-show="newRobotId">
+  <div class="row">
+    <div class="medium-8 columns">
+      <div class="callout panel">
+        <h5><small><em>For ID {{newRobotId || "ERROR"}}</em></small></h5>
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-arrow-right"></i> <i class="fi-torso"></i> &nbsp; <strong>Catch</strong> </p>
+            <input type="radio" name="catch" value="1" ng-model="ballCatch" />
+            Yes
+            <input type="radio" name="catch" value="0" ng-model="ballCatch" />
+            No</div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-arrow-left"></i> <i class="fi-torso"></i> &nbsp; <strong>Throw</strong> </p>
+            <input type="radio" name="throw" value="1" ng-model="ballThrow" />
+            Yes
+            <input type="radio" name="throw" value="0" ng-model="ballThrow" />
+            No </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-target"></i> &nbsp; <strong>High Goal</strong> </p>
+            <input type="radio" name="high_goal" value="1" ng-model="highGoal" />
+            Yes
+            <input type="radio" name="high_goal" value="0" ng-model="highGoal" />
+            No </div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-target"></i> &nbsp; <strong>Low Goal</strong> </p>
+            <input type="radio" name="low_goal" value="1" ng-model="lowGoal" />
+            Yes
+            <input type="radio" name="low_goal" value="0" ng-model="lowGoal" />
+            No </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-graph-trend"></i> &nbsp; <strong>Ability</strong> </p>
+            <select name="ability" ng-model="ability">
+              <option value="1">Defense</option>
+              <option value="2">Offense</option>
+              <option value="3">Both</option>
+            </select>
+          </div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-graph-bar"></i> &nbsp; <strong>Style</strong> </p>
+            <select name="style" ng-model="style">
+              <option value="1">Defense</option>
+              <option value="2">Offense</option>
+              <option value="3">Both</option>
+            </select>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-arrows-out"></i> &nbsp; <strong>Pass</strong> </p>
+            <input type="radio" name="pass" value="1" ng-model="pass" />
+            Yes
+            <input type="radio" name="pass" value="0" ng-model="pass" />
+            No </div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-arrows-in"></i> &nbsp; <strong>Recieve</strong> </p>
+            <input type="radio" name="recieve" value="1" ng-model="recieve" />
+            Yes
+            <input type="radio" name="recieve" value="0" ng-model="recieve" />
+            No </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-torso"></i><i class="fi-flag"></i> &nbsp; <strong>Hot Target</strong> </p>
+            <input type="radio" name="hot_target" value="1" ng-model="hotTarget" />
+            Yes
+            <input type="radio" name="hot_target" value="0" ng-model="hotTarget" />
+            No </div>
+            
+            <div class="medium-6 columns">
+            <p> <i class="fi-torso"></i><i class="fi-arrow-up"></i> &nbsp; <strong>Pick Up</strong> </p>
+            <input type="radio" name="pick_up" value="1" ng-model="pickUp" />
+            Yes
+            <input type="radio" name="pick_up" value="0" ng-model="pickUp" />
+            No </div>
+            
+        </div>
+      </div>
+    </div>
+    <div class="medium-4 columns">
+      <h5> <i class="fi-clipboard-notes"></i> &nbsp; Add any notes you have here:</h5>
+      <div class="row">
+        <div class="medium-12 columns">
+          <textarea placeholder="Notes" name="512" ng-model="robotDetailsNotes"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-8 columns"> <a href="#" class="button small secondary left"> Cancel </a>
+      <button type="button" ng-click="submitRobotDetails()" class="button small right"> Save </button>
+    </div>
+  </div>
+</form>

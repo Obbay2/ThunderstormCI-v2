@@ -1,0 +1,116 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Robot Details</title>
+<link rel="stylesheet" href="css/foundation.css" />
+<link rel="stylesheet" href="foundation-icons/foundation-icons.css" />
+<script src="js/vendor/modernizr.js"></script>
+</head>
+<body>
+<div class="row">
+  <div class="medium-12 columns">
+    <h1>Robot Details</h1>
+  </div>
+</div>
+<form action="submitRobot.json" method="post" name="robotDetailsCollection" id="robotDetailsCollection">
+  <div class="row">
+    <div class="medium-8 columns">
+      <div class="callout panel">
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-arrow-right"></i> <i class="fi-torso"></i> &nbsp; <strong>Catch</strong> </p>
+            <input type="radio" name="catch" value="yes" />
+            Yes
+            <input type="radio" name="catch" value="no" />
+            No</div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-arrow-left"></i> <i class="fi-torso"></i> &nbsp; <strong>Throw</strong> </p>
+            <input type="radio" name="throw" value="yes" />
+            Yes
+            <input type="radio" name="throw" value="no" />
+            No </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-target"></i> &nbsp; <strong>High Goal</strong> </p>
+            <input type="radio" name="high_goal" value="yes" />
+            Yes
+            <input type="radio" name="high_goal" value="no" />
+            No </div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-target"></i> &nbsp; <strong>Low Goal</strong> </p>
+            <input type="radio" name="low_goal" value="yes" />
+            Yes
+            <input type="radio" name="low_goal" value="no" />
+            No </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-graph-trend"></i> &nbsp; <strong>Ability</strong> </p>
+            <select name="ability">
+              <option value="1">Defense</option>
+              <option value="2">Offense</option>
+              <option value="3">Both</option>
+            </select>
+          </div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-graph-bar"></i> &nbsp; <strong>Style</strong> </p>
+            <select name="style">
+              <option value="1">Defense</option>
+              <option value="2">Offense</option>
+              <option value="3">Both</option>
+            </select>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-arrows-out"></i> &nbsp; <strong>Pass</strong> </p>
+            <input type="radio" name="pass" value="yes" />
+            Yes
+            <input type="radio" name="pass" value="no" />
+            No </div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-arrows-in"></i> &nbsp; <strong>Recieve</strong> </p>
+            <input type="radio" name="recieve" value="yes" />
+            Yes
+            <input type="radio" name="recieve" value="no" />
+            No </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-torso"></i><i class="fi-flag"></i> &nbsp; <strong>Hot Target</strong> </p>
+            <input type="radio" name="hot_target" value="yes" />
+            Yes
+            <input type="radio" name="hot_target" value="no" />
+            No </div>
+        </div>
+      </div>
+    </div>
+    <div class="medium-4 columns">
+      <h5> <i class="fi-clipboard-notes"></i> &nbsp; Add any notes you have here:</h5>
+      <div class="row">
+        <div class="medium-12 columns">
+          <textarea placeholder="Notes" name="512"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-8 columns"> <a href="#" class="button small secondary left"> Cancel </a>
+      <button type="submit" class="button small right"> Submit </button>
+    </div>
+  </div>
+</form>
+<script src="js/vendor/jquery.js"></script> 
+<script src="js/foundation.min.js"></script> 
+<script>
+      $(document).foundation();
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE>
+<html>
+<head>
+<script src="js/DevExpressChartJS-13/Lib/js/jquery-2.0.3.min.js"></script>
+<script src="js/DevExpressChartJS-13/Lib/js/globalize.js"></script>
+<script src="js/DevExpressChartJS-13/Lib/js/dx.chartjs.js"></script>
+
+<script src="js/DevExpressChartJS-13/Lib/js/modules/dx.module-core.js"></script>
+<script src="js/DevExpressChartJS-13/Lib/js/modules/dx.module-viz-core.js"></script>
+<script src="js/DevExpressChartJS-13/Lib/js/modules/dx.module-viz-charts.js"></script>
+</head>
+
+<body>
+
+<div id="firstGraph" style="height:400px; max-width:700px; margin: 0 auto; display:none"></div>
+<div id="secondGraph" style="max-width:800px;height: 300px;display:none"></div>
+
+<script>
+window.setTimeout(function(){
+    showFirstGraph();
+  },500);
+  window.setTimeout(function(){
+    showSecondGraph();
+  },1500);
+  
+  var dataSource = [
+    { year: 1950, europe: 546, americas: 332, africa: 227 },
+    { year: 2050, europe: 650, americas: 1231, africa: 1937 },
+    { year: 2040, europe: 680, americas: 1178, africa: 1665 },
+    { year: 2030, europe: 704, americas: 1110, africa: 1416 },
+    { year: 2020, europe: 721, americas: 1027, africa: 1189 },
+    { year: 2010, europe: 728, americas: 935, africa: 982 },
+    { year: 2000, europe: 730, americas: 836, africa: 797 },
+    { year: 1990, europe: 721, americas: 721, africa: 623 },
+    { year: 1980, europe: 694, americas: 614, africa: 471 },
+    { year: 1970, europe: 656, americas: 513, africa: 361 },
+    { year: 1960, europe: 605, americas: 417, africa: 283 }
+];
+function showFirstGraph() {
+$( "#firstGraph" ).fadeIn( 1000 );
+
+    $("#firstGraph").dxChart({
+        dataSource: dataSource,
+        commonSeriesSettings: {
+            argumentField: 'year'
+        },
+        series: [
+            { valueField: 'europe', name: 'Europe' },
+            { valueField: 'americas', name: 'Americas' },
+            { valueField: 'africa', name: 'Africa' }
+        ],
+        animation: {
+            duration: 400
+        },
+        commonAxisSettings: { visible: true }
+    });
+};
+function showSecondGraph() {
+$( "#secondGraph" ).fadeIn( 1000 );
+
+    var pieChartDataSource = [
+    {category: 'Oceania', value: 35},
+    {category: 'Africa', value: 1016},
+    {category: 'Americas', value: 936},
+    {category: 'Asia', value: 4149},
+    {category: 'Europe', value: 728}                                                        
+];
+ 
+$(function () {             
+    $("#secondGraph").dxPieChart({
+        dataSource: pieChartDataSource,
+        series: {
+            argumentField: 'category',
+            valueField: 'value',
+        },
+        animation: {
+            duration: 400
+        }
+    });
+});
+};
+</script>
+
+</body>
+</html

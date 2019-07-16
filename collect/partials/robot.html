@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="medium-12 columns">
+    <h1>Robot Data Input</h1>
+  </div>
+</div>
+<form action="submitRobot.json" method="post" name="robotCollection" id="robotCollection">
+  <div class="row">
+    <div class="medium-8 columns">
+      <div class="callout panel">
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-die-six"></i> &nbsp; <strong>Team Number</strong> </p>
+            <input type="text" onkeypress="return isNumberKey(event)" ng-model="teamNumberRobotEnter" placeholder="ex: 2811" maxlength="4" />
+          </div>
+          <div class="medium-6 columns text-center">
+            <p> <strong>Updating / Viewing</strong> </p>
+            <button type="button" ng-click="getRobot()" class="button tiny" ng-show="teamNumberRobotEnter"> Get Info </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-wrench"></i> &nbsp; <strong>Drive Train Description</strong> </p>
+            <input type="text" placeholder="ex: swerve, tank, mecanum" ng-model="driveTrain" maxlength="20" />
+          </div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-wrench"></i> &nbsp; <strong>Number of Drive Train Motors</strong> </p>
+            <input type="text" onkeypress="return isNumberKey(event)" placeholder="" ng-model="numDriveTrainMotors" maxlength="3" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-wrench"></i> &nbsp; <strong>Type of Drive Train Motors</strong> </p>
+            <input type="text" placeholder="ex: cim, servo" ng-model="typeDriveTrainMotors" maxlength="20" />
+          </div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-wrench"></i> &nbsp; <strong>Number of Other Motors</strong> </p>
+            <input type="text" onkeypress="return isNumberKey(event)" placeholder="" ng-model="numOtherMotors" maxlength="3" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-wrench"></i> &nbsp; <strong>Type of Other Motors</strong> </p>
+            <input type="text" placeholder="ex: cim, servo" ng-model="typeOtherMotors" maxlength="20" />
+          </div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-arrow-down"></i> &nbsp; <strong>Weight</strong> </p>
+            <input type="text" onkeypress="return isNumberKey(event)" placeholder="ex: 90" ng-model="weight" maxlength="4" />
+          </div>
+        </div>
+        <p> <i class="fi-puzzle"></i> &nbsp; <strong>Programming Language</strong>
+        <div>
+          <input type="text" placeholder="ex: java, visual basic, lua" ng-model="programmingLanguage" />
+        </div>
+        </p>
+        <p> <i class="fi-mobile-signal"></i> &nbsp; <strong>Autonomous</strong>
+        <div>
+          <input type="radio" name="autonomous" value="1" ng-model="robotEnterAutonomous" />
+          Yes 
+          <input type="radio" name="autonomous" value="0" ng-model="robotEnterAutonomous" />
+          No </div>
+        </p>
+        <div>
+          <p> Select a Picture:
+            <input type="file" name="picture" accept='image/*' disabled />
+          </p>
+          <h6 style="margin-top:-30px;"><small><em>Image capabilities coming soon</em></small></h6>
+        </div>
+      </div>
+    </div>
+    <div class="medium-4 columns">
+      <h5> <i class="fi-clipboard-notes"></i> &nbsp; Add any notes you have here:</h5>
+      <div class="row">
+        <div class="medium-12 columns">
+          <textarea placeholder="Notes" ng-model="robotEnterNotes"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-8 columns"> <a href="#" class="button small secondary left"> Back </a>
+      <a href="#/robotDetails" class="button small right" ng-show="newRobotId">Enter Robot Details <i class="fi-arrow-right"></i></a>
+      <button type="button" ng-click="submitRobot()" class="button small right" ng-show="!newRobotId"> Save </button>
+      <button type="button" ng-click="updateRobot()" class="button small right" style="margin-right:2px;"> Update </button>
+    </div>
+  </div>
+</form>

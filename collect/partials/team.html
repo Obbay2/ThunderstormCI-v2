@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="large-12 columns">
+    <h1>Team Data Input</h1>
+  </div>
+</div>
+<form action="submitTeam.json" method="post" name="teamCollection" id="teamCollection">
+  <div class="row">
+    <div class="medium-8 columns">
+      <div class="callout panel">
+        <p> <i class="fi-die-six"></i> &nbsp; <strong>Team Number</strong>
+        <div>
+          <input type="text" onkeypress="return isNumberKey(event)" ng-model="teamNumberEnter" placeholder="ex: 2811" maxlength="4" />
+        </div>
+        </p>
+        <p> <i class="fi-torsos-all"></i> &nbsp; <strong>Team Name</strong>
+        <div>
+          <input type="text" ng-model="teamName" placeholder="ex: Stormbots" maxlength="64" />
+        </div>
+        </p>
+        <p> <i class="fi-book"></i> &nbsp; <strong>School</strong>
+        <div>
+          <input type="text" ng-model="schoolName" placeholder="ex: Skyview High School" maxlength="64" />
+        </div>
+        </p>
+        <p> <i class="fi-map"></i> &nbsp; <strong>School Location</strong>
+        <div class="row">
+          <div class="medium-8 columns">
+            <input type="text" ng-model="city" placeholder="ex: Vancouver" maxlength="64" />
+          </div>
+          <div class="medium-4 columns">
+            <input type="text" ng-model="state" placeholder="ex: WA" maxlength="2" />
+          </div>
+        </div>
+        </p>
+        <p> <i class="fi-torso-business"></i> &nbsp; <strong>Leader's Name</strong>
+        <div>
+          <input type="text" ng-model="leaderFullName" placeholder="ex: Chris Johnson" maxlength="64" />
+        </div>
+        </p>
+        <p> <i class="fi-checkbox"></i> &nbsp; <strong>Year Founded</strong>
+        <div>
+          <input type="text" onkeypress="return isNumberKey(event)" ng-model="yearFounded" placeholder="ex: 1993" maxlength="4" />
+        </div>
+        </p>
+      </div>
+    </div>
+    <div class="medium-4 columns">
+      <h5> <i class="fi-clipboard-notes"></i> &nbsp; Add any notes you have here:</h5>
+      <div class="row">
+        <div class="medium-12 columns">
+          <textarea ng-model="notes" placeholder="Notes"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-8 columns"> <a href="#/teamSearch" class="button small secondary left"> Back to Search </a>
+      <button type="button" ng-click="submitTeam()" class="button small right"> Save </button>
+    </div>
+  </div>
+</form>

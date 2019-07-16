@@ -1,0 +1,67 @@
+.size-12 { font-size: 12px; }
+
+.size-14 { font-size: 14px; }
+
+.size-16 { font-size: 16px; }
+
+.size-18 { font-size: 18px; }
+
+.size-21 { font-size: 21px; }
+
+.size-24 { font-size: 24px; }
+
+.size-36 { font-size: 36px; }
+
+.size-48 { font-size: 48px; }
+
+.size-60 { font-size: 60px; }
+
+.size-72 { font-size: 72px; }
+
+
+.title-area {
+	padding-left:45px;	
+}
+.tableWrap{
+    width:100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+	-webkit-overflow-scrolling: touch;
+}
+.tableWrap::-webkit-scrollbar
+{
+  height: 5px; /* for horizontal scrollbars */
+}
+.tableWrap::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.editSaveButtons {
+	display:table-cell;
+	padding-top:20px;
+}
+
+.teamCell {
+	width: 60px !important;
+	margin-right:-8px !important;
+	margin-left:-8px !important;
+}
+
+.team-input {
+	width: 90px !important;
+	margin-right:-8px !important;
+	margin-left:-8px !important;
+}
+
+.team-stateInput {
+	width: 40px !important;
+	margin-right:-8px !important;
+	margin-left:6px !important;
+}
+
+/* XEditable - Pluggin Bootstrap Holes */
+.editable-error {
+	color: #b94a48;
+}

@@ -1,0 +1,88 @@
+<div class="page-header">
+  <div class="row">
+    <div class="medium-7 columns"><h1>Robot Details - View Data</h1></div>
+    <div class="medium-2 columns"><select ng-model="robotDetailsOrder" style="margin-top:26px;" class="form-control"><option value="-robotDetailsId">Newest</option><option value="robotDetailsId">Oldest</option></select></div>
+    
+    <div class="medium-3 columns"><input type="text" id="roundSearchFieldRobotDetails" class="form-control" ng-model="robotDetailsSearch.$" placeholder="Search" style="margin-top:25px;"></div>
+    
+  </div>
+</div> 
+
+
+
+
+<div ng-controller="robotDetailsRowCtrl">
+  <div class="tableWrap">
+      <table>
+        <tr style="font-weight: bold">
+          <td>Team</td>
+          <td>Catch</td>
+          <td>Throw</td>
+          <td>High</td>
+          <td>Low</td>
+          <td>Ability</td>
+          <td>Style</td>
+          <td>Pass</td>
+          <td>Receive</td>
+          <td>Hot Target</td>
+          <td>Pick up</td>
+          <td>Notes</td>
+        </tr>
+        <tr ng-repeat="robotDetail in robotDetails  | filter:robotDetailsSearch | orderBy:robotDetailsOrder | startFrom:currentPage*pageSize | limitTo:pageSize">
+          <td>
+            {{ robotDetail.teamNumber || robotDetail.robotId }}
+          </td>
+          <td>
+             {{ robotDetail.ballCatch == "1" && 'Yes' || robotDetail.ballCatch == "0" && 'no' || "-" }}
+          </td>
+          <td>
+             {{ robotDetail.ballThrow == "1" && 'Yes' || robotDetail.ballThrow == "0" && 'no' || "-" }}
+          </td>
+          <td>
+            {{ robotDetail.highGoal == "1" && 'Yes' || robotDetail.highGoal == "0" && 'no' || "-" }}
+          </td>
+          <td>
+            {{ robotDetail.lowGoal == "1" && 'Yes' || robotDetail.lowGoal == "0" && 'no' || "-" }}
+          </td>
+          <td>
+            {{ robotDetail.ability == "1" && 'Defense' || robotDetail.ability == 2 && 'Offense' || robotDetail.ability == 3 && 'Both'}}
+          </td>
+          <td>
+            {{ robotDetail.style == "1" && 'Defense' || robotDetail.style == 2 && 'Offense' || robotDetail.style == 3 && 'Both'}}
+          </td>
+          <td>
+            {{ robotDetail.pass == "1" && 'Yes' || robotDetail.pass == "0" && 'no' || "-" }}
+          </td>
+          <td>
+            {{ robotDetail.recieve == "1" && 'Yes' || robotDetail.recieve == "0" && 'no' || "-" }}
+          </td>
+          <td>
+            {{ robotDetail.hotTarget == "1" && 'Yes' || robotDetail.hotTarget == "0" && 'no' || "-" }}
+          </td>
+          <td>
+            {{ robotDetail.pickUp == "1" && 'Yes' || robotDetail.pickUp == "0" && 'no' || "-" }}
+          </td>
+          <td height="57px">
+             <span ng-hide="robotDetail.notes">{{ robotDetail.notes }}</span>
+             <button type="button" ng-hide="!robotDetail.notes" class="button tiny" data-tooltip title="{{ robotDetail.notes || 'empty' }}"><i class="fi-clipboard-notes size-14"></i></button>
+            
+             <span style="display:none;">
+               {{ robotDetail.robotDetailsId || 'empty' }}
+        	 </span>
+            
+          </td>
+          
+        </tr>
+      </table>
+  </div>
+  <div class="pagination-centered">
+    <ul class="pagination">
+      <li class="arrow" ng-class="{unavailable:currentPage == 0}"><a href="" ng-click="changePage('prev')">&laquo;</a></li>
+      <li class="current"><a href="">Page {{currentPage+1}} of {{numberOfPages()}}</a></li>
+      <li class="arrow" ng-class="{unavailable:currentPage >= rounds.length/pageSize - 1}"><a href="" ng-click="changePage('next')">&raquo;</a></li>
+    </ul>
+    <div ng-show="!robotDetails">Loading...</div>
+  </div>
+  
+  <a href="../../collect/#/home" class="button tiny left">Back to Collect <em>(link)</em></a>
+</div>

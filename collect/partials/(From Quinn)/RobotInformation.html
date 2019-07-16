@@ -1,0 +1,101 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Robot Data Input</title>
+<link rel="stylesheet" href="css/foundation.css" />
+<link rel="stylesheet" href="foundation-icons/foundation-icons.css" />
+<script src="js/vendor/modernizr.js"></script>
+</head>
+<body>
+<div class="row">
+  <div class="medium-12 columns">
+    <h1>Robot Data Input</h1>
+  </div>
+</div>
+<form action="submitRobot.json" method="post" name="robotCollection" id="robotCollection">
+  <div class="row">
+    <div class="medium-8 columns">
+      <div class="callout panel">
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-die-six"></i> &nbsp; <strong>Team Number</strong> </p>
+            <input type="text" placeholder="" maxlength="20" />
+          </div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-calendar"></i> &nbsp; <strong>Year</strong> </p>
+            <input type="text" placeholder="" maxlength="20" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-wrench"></i> &nbsp; <strong>Drive Train Description</strong> </p>
+            <input type="text" placeholder="" maxlength="20" />
+          </div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-wrench"></i> &nbsp; <strong>Number of Drive Train Motors</strong> </p>
+            <input type="text" placeholder="" maxlength="20" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-wrench"></i> &nbsp; <strong>Type of Drive Train Motors</strong> </p>
+            <input type="text" placeholder="" maxlength="20" />
+          </div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-wrench"></i> &nbsp; <strong>Number of Other Motors</strong> </p>
+            <input type="text" placeholder="" maxlength="20" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-6 columns">
+            <p> <i class="fi-wrench"></i> &nbsp; <strong>Type of Other Motors</strong> </p>
+            <input type="text" placeholder="" maxlength="20" />
+          </div>
+          <div class="medium-6 columns">
+            <p> <i class="fi-arrow-down"></i> &nbsp; <strong>Weight</strong> </p>
+            <input type="text" placeholder="" maxlength="20" />
+          </div>
+        </div>
+        <p> <i class="fi-puzzle"></i> &nbsp; <strong>Programming Language</strong>
+        <div>
+          <input type="text" placeholder="" />
+        </div>
+        </p>
+        <p> <i class="fi-mobile-signal"></i> &nbsp; <strong>Autonomous</strong>
+        <div>
+          <input type="radio" name="autonomous" value="yes" />
+          Yes
+          <input type="radio" name="autonomous" value="no" />
+          No </div>
+        </p>
+        <div>
+          <p> Select a Picture:
+            <input type="file" name="picture" />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="medium-4 columns">
+      <h5> <i class="fi-clipboard-notes"></i> &nbsp; Add any notes you have here:</h5>
+      <div class="row">
+        <div class="medium-12 columns">
+          <textarea placeholder="Notes"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-8 columns"> <a href="http://foundation.zurb.com/docs/" class="button small secondary left"> Cancel </a>
+      <button type="submit" class="button small right"> Submit </button>
+    </div>
+  </div>
+</form>
+<script src="js/vendor/jquery.js"></script> 
+<script src="js/foundation.min.js"></script> 
+<script>
+      $(document).foundation();
+    </script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+html {
+    overflow-y: scroll;
+}
+
+.size-12 { font-size: 12px; }
+
+.size-14 { font-size: 14px; }
+
+.size-16 { font-size: 16px; }
+
+.size-18 { font-size: 18px; }
+
+.size-21 { font-size: 21px; }
+
+.size-24 { font-size: 24px; }
+
+.size-36 { font-size: 36px; }
+
+.size-48 { font-size: 48px; }
+
+.size-60 { font-size: 60px; }
+
+.size-72 { font-size: 72px; }
+
+
+.title-area {
+	padding-left:45px;	
+}
+
+.show-hide {
+	-webkit-transition:all linear 0.5s;
+	transition:all linear 0.5s;
+	opacity:1;
+	margin-top:0px;
+}
+ 
+.show-hide.ng-hide-add, .show-hide.ng-hide-remove {
+	display:block!important;
+}
+ 
+.show-hide.ng-hide {
+	opacity:0;
+	margin-top:-420px;
+}
+
+/* XEditable - Pluggin Bootstrap Holes */
+.editable-error {
+	color: #b94a48;
+}
+
+
+/* CSS FOR SCORE */
+
+#scoreChooseTeam {
+	z-index:100;
+}
+
+#waitForTeams {
+	display:none;
+	position:relative;
+	left:160px;
+	top:-18px;
+}
+
+#roundNotEntered {
+	margin-top:-10px;
+	padding-left:40px;
+	padding-bottom:22px;
+}
+
+#startTeamsBar {
+	display:none;
+}
+
+.collection-thanks {
+	padding-top:30px;
+}
+
+.start-collecting-button {
+	margin-top:5px;
+}
+
+.no-padding {
+	padding-right:0px!important;
+	padding-left:0px!important;	
+}
+
+.small-padding {
+	padding-top:10px!important;
+	padding-left:10px!important;
+}
+
+.small-margin-bottom {
+	margin-bottom:4px!important;	
+}
+
+.scoreRoundEditButton {
+	padding-top:3px!important;	
+	padding-bottom:3px!important;
+	padding-right:8px!important;
+	padding-left:8px!important;	
+	margin-left:15px;
+	margin-bottom:0px;
+}
+
+@media only screen and (max-width: 40em) { 
+	.small-padding-button {
+		padding-right:25px!important;
+		padding-left:25px!important;
+	}
+	#waitForTeams {
+		position:relative;
+		left:120px;
+		top:-14px;
+	}
+	.collection-thanks {
+		padding-top:0px!important;
+		font-size:5px!important;
+		text-align:center!important;
+	}
+	.scoreRoundEditButton {
+		margin-left:2px;
+	}
+	.preload-title {
+		margin-top: 0px!important;
+	}
+	.top-col {
+		margin-top:-20px!important;	
+	}
+	.top-fail-label {
+		top:50px!important;
+		font-size:21px!important;
+	}
+	.top-success-label {
+		top:50px!important;
+		font-size:21px!important;
+	}
+	.low-success-label {
+		top:60%!important;
+		left:28%!important;
+		font-size:42px!important;
+	}
+	.low-fail-label {
+		top:60%!important;
+		left:30%!important;
+		font-size:42px!important;
+	}
+	.blocked-minus {
+		margin-left:-10px!important;
+		padding-left:8px!important;
+		padding-right:8px!important;
+	}
+	.low-goal-counter {
+		margin-top: -170px;
+	}
+	.low-goal-counter-left {
+		margin-left:2px!important;
+	}
+	
+	.low-goal-counter-right {
+		margin-right:2px!important;
+	}
+}
+@media only screen and (max-width: 20em) { 
+	.small-padding-button {
+		padding-right:15px!important;
+		padding-left:15px!important;
+	}
+	.cancel-modal {
+		display:none;
+	}
+	.low-success-label {
+		top:52%!important;
+		left:18%!important;
+	}
+	.low-fail-label {
+		top:52%!important;
+		left:20%!important;
+	}
+	.low-goal-counter {
+		margin-top: -225px;
+	}
+}
+
+#statusLoading {
+	padding-left:12px;
+	padding-right:0px!important;
+}
+
+#statusLoading, #statusSaved, #statusError {
+	display:block;
+}
+
+#waitTopTiny {
+	margin-right:65px;
+	padding-top:12px;
+	margin-bottom:-12px;
+	/*position:relative;
+	top:3px;
+	right:5px;*/
+}
+
+.top-goal-pic {
+	min-height:80px;
+}
+
+.flip-horizontal {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    -ms-filter: fliph; /*IE*/
+    filter: fliph; /*IE*/
+}
+
+.thin-button {
+	padding-top:5px!important;
+	padding-bottom:4px!important;
+}
+
+.robot-preview {
+	margin-bottom:10px;
+}
+
+.preload-title {
+	margin-top: -20px;
+}
+
+.switch {
+	margin-bottom:30px!important;	
+}
+
+.outline-blue {
+	height:100px;
+	z-index:2;
+	outline:solid;
+	outline-color:#09F;
+	color:#09F;
+}
+.outline-white {
+	height:100px;
+	z-index:1;
+	outline:solid;
+	outline-color:#FFF;	
+	color:#666;
+}
+.outline-red {
+	height:100px;
+	z-index:2;
+	outline:solid;
+	outline-color:#C00;
+	color:#C00;
+}
+
+.start-label-center {
+	padding-top: 5px;
+	line-height: 30px;
+}
+
+.start-pos-label {
+	margin-top:10px;	
+}
+
+.auto-divs {
+	border-top:solid;
+	border-bottom:solid;
+	padding-left:5px;
+	padding-top:5px;
+}
+
+.auto-labels {
+	margin-bottom:6px;	
+}
+
+.top-div {
+	border-color:#FF6;
+}
+
+.low-div {
+	border-color:#999;
+}
+
+.top-col {
+	margin-top:-45px;	
+}
+
+.top-fail-label {
+	color:#C00;
+	position:relative;
+	left:4%;
+	top:80px;
+	font-size:48px;
+}
+
+.top-success-label {
+	color:#3C3;
+	position:relative;
+	right:5%;
+	top:80px;
+	font-size:48px;
+}
+
+.small-minus-button {
+	position:relative;
+	top:0px;
+	z-index:3;
+	padding-top:3px!important;
+	padding-bottom:4px!important;
+	padding-right:10px!important;
+	padding-left:10px!important;
+	margin-bottom:0px;
+}
+
+.lower-goal-pic {
+	margin-bottom:5px;
+}
+
+.low-success-label {
+	position:absolute;
+	top:140px;
+	left:65px;
+	color:#3C3;
+	font-size:48px;
+}
+
+.low-fail-label {
+	position:absolute;
+	top:140px;
+	left:65px;
+	color:#C00;
+	font-size:48px;
+}
+
+.low-goal-counter-left {
+	text-align:left;
+	margin-left:26px;
+}
+
+.low-goal-counter-right {
+	text-align:right;
+	margin-right:26px;
+}
+
+.thin-button-middles {
+	margin-left:-3px;
+	padding-top:5px!important;
+	padding-bottom:4px!important;
+	padding-right:8px!important;
+	padding-left:8px!important;
+}
+
+.pass {
+	padding-top:5px;
+}
+
+.pass .icons {
+	font-size:36px;
+}
+
+.pass .icons .fi-social-dribbble {
+	color:#C00;
+}
+
+.pass-label {
+	position:relative;
+	top:-7px;
+	color:#09F;
+}
+
+.blocked-button {
+	margin-left:5px!important;
+}
+
+.blocked-minus {
+	border-left:solid;
+	margin-left:-5px!important;
+}
+
+/* END CSS FOR SCORE */

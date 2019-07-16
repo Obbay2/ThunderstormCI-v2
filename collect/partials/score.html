@@ -1,0 +1,338 @@
+<form action="#" method="post" name="scoreCollection" id="teamCollection">
+  <div class="panel" style="padding-top:10px!important;padding-bottom:10px!important;">
+    <div class="row">
+      <div class="small-10 columns">
+        <span class="hide-for-small-only">
+          <span class="label">Round</span>
+          <span class="label secondary">{{roundNumber || 'x'}}</span>
+          <span class="label">Team</span>
+          <span class="label secondary">{{teamNumber || "x"}}</span>
+          <a href="#/round" class="button tiny alert scoreRoundEditButton"><i class="fi-page-edit"></i></a>
+        </span>
+        <span class="show-for-small-only">
+          <span class="label">R</span><span class="label secondary">{{roundNumber || "x"}}</span>
+          <span class="label">T</span><span class="label secondary">{{teamNumber || "x"}}</span>
+          <a href="#/round" class="button tiny alert scoreRoundEditButton"><i class="fi-page-edit"></i></a>
+        </span>
+      </div>
+      <div class="small-2 columns">
+        <div class="right">
+          <span id="statusLoading" class="label"><div id="waitTopTiny"><script type="text/javascript">$("#waitTopTiny").spin("tiny", "white");</script></div>Saving...</span>
+          <span id="statusSaved" class="label success"><i class="fi-check"></i> Saved</span>
+          <span id="statusError" class="label alert"><i class="fi-alert"></i> ERROR</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row show-hide" ng-show="showPre">
+    <div class="small-6 columns no-padding">
+      <!-- Begin Pre-Game Pannel -->
+      <div class="panel callout small-padding">
+      
+        <h6>Pre-Game</h6>
+        
+        <div class="row">
+          <div class="medium-6 columns text-center">
+            <img class="th robot-preview" src="../images/placeholder.png">
+          </div>
+          <div class="medium-6 columns">
+            <h6 class="subheader text-center preload-title">Ball Pre-Loaded:</h6>
+          	<div class="switch">
+                <input type="checkbox" ng-model="preloaded" ng-true-value="1" ng-false-value="0">
+                <label><i class="fi-check"></i></label>
+            </div>
+          </div>
+        </div>
+        
+        <h6 class="subheader text-center">Starting Position:</h6>
+        
+        <div class="row">
+          <div class="small-2 columns outline-blue">
+            <div class="start-label-center">
+              <div class="text-center hide-for-small-only">
+                <div ng-click="startPosition='goal-low'"><em>Lower</em></div>
+                <div ng-click="startPosition='goal-mid'"><em>Middle</em></div>
+                <div ng-click="startPosition='goal-upper'"><em>Upper</em></div>
+              </div>
+              <div class="text-center show-for-small-only">
+                <div ng-click="startPosition='goal-low'"><i class="fi-arrow-up"></i></div>
+                <div ng-click="startPosition='goal-mid'"><i class="fi-minus"></i></div>
+                <div ng-click="startPosition='goal-upper'"><i class="fi-arrow-down"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="small-4 columns outline-white">
+            <div class="start-label-center">
+              <div class="text-center hide-for-small-only">
+                <div ng-click="startPosition='white-low'"><em>Lower</em></div>
+                <div ng-click="startPosition='white-mid'"><em>Middle</em></div>
+                <div ng-click="startPosition='white-upper'"><em>Upper</em></div>
+              </div>
+              <div class="text-center show-for-small-only">
+                <div ng-click="startPosition='white-low'"><i class="fi-arrow-up"></i></div>
+                <div ng-click="startPosition='white-mid'"><i class="fi-minus"></i></div>
+                <div ng-click="startPosition='white-upper'"><i class="fi-arrow-down"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="small-4 columns outline-white">
+            <div class="start-label-center">
+              <div class="text-center hide-for-small-only">
+                <div ng-click="startPosition='white-upper'"><em>Upper</em></div>
+                <div ng-click="startPosition='white-mid'"><em>Middle</em></div>
+                <div ng-click="startPosition='white-low'"><em>Lower</em></div>
+              </div>
+              <div class="text-center show-for-small-only">
+                <div ng-click="startPosition='white-upper'"><i class="fi-arrow-up"></i></div>
+                <div ng-click="startPosition='white-mid'"><i class="fi-minus"></i></div>
+                <div ng-click="startPosition='white-low'"><i class="fi-arrow-down"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="small-2 columns outline-red">
+            <div class="start-label-center">
+              <div class="text-center hide-for-small-only">
+                <div ng-click="startPosition='goal-upper'"><em>Upper</em></div>
+                <div ng-click="startPosition='goal-mid'"><em>Middle</em></div>
+                <div ng-click="startPosition='goal-low'"><em>Lower</em></div>
+              </div>
+              <div class="text-center show-for-small-only">
+                <div ng-click="startPosition='goal-upper'"><i class="fi-arrow-up"></i></div>
+                <div ng-click="startPosition='goal-mid'"><i class="fi-minus"></i></div>
+                <div ng-click="startPosition='goal-low'"><i class="fi-arrow-down"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center start-pos-label">
+          <span>Position:</span>
+          <span class="label">{{startPosition}}</span>
+        </div>
+        
+      </div>
+      <!-- End Pre-Game Pannel -->
+    </div><!-- /small-6 -->
+    
+    <div class="small-6 columns no-padding">
+      <!-- Begin Auto Pannel -->
+      <div class="panel small-padding">
+        <h6>Autonomous</h6>
+        
+        <div class="auto-divs top-div text-center">
+          <div class="auto-labels" ng-click="autoTopFail=0;autoTopHot=0;autoTopSuccess=0"><em>Top Goal</em> &nbsp;<i class="fi-refresh"></i> <small>reset</small> </div>
+          <div class="hide-for-small-only">
+            <button type="button" class="button alert small-margin-bottom" ng-click="autoTopFail = autoTopFail + 1"><i class="fi-x"></i> {{autoTopFail}}</button>
+            <button type="button" class="button success small-margin-bottom" ng-click="autoTopHot = autoTopHot + 1"><i class="fi-lightbulb"></i> {{autoTopHot}}</button>
+            <button type="button" class="button small-margin-bottom" ng-click="autoTopSuccess = autoTopSuccess + 1"><i class="fi-check"></i> {{autoTopSuccess}}</button>
+          </div>
+          <div class="text-center show-for-small-only">
+            <button type="button" class="button tiny alert small-margin-bottom" ng-click="autoTopFail = autoTopFail + 1"><i class="fi-x"></i> {{autoTopFail}}</button>
+            <button type="button" class="button tiny small-margin-bottom" ng-click="autoTopSuccess = autoTopSuccess + 1"><i class="fi-check"></i> {{autoTopSuccess}}</button>
+            <button type="button" class="button tiny success small-margin-bottom" ng-click="autoTopHot = autoTopHot + 1"><i class="fi-lightbulb"></i> {{autoTopHot}}</button>
+          </div>
+        </div>
+        
+        <div class="auto-divs low-div text-center">
+          <div class="auto-labels" ng-click="autoLowerFail=0;autoLowerSuccess=0"><em>Low Goal</em> &nbsp;<i class="fi-refresh"></i> <small>reset</small> </div>
+          <div class="hide-for-small-only">
+            <button type="button" class="button alert small-margin-bottom" ng-click="autoLowerFail = autoLowerFail + 1"><i class="fi-x"></i> {{autoLowerFail}}</button>
+            <button type="button" class="button small-margin-bottom" ng-click="autoLowerSuccess = autoLowerSuccess + 1"><i class="fi-check"></i> {{autoLowerSuccess}}</button>
+          </div>
+          <div class="text-center show-for-small-only">
+            <button type="button" class="button tiny alert small-margin-bottom" ng-click="autoLowerFail = autoLowerFail + 1"><i class="fi-x"></i> {{autoLowerFail}}</button>
+            <button type="button" class="button tiny small-margin-bottom" ng-click="autoLowerSuccess = autoLowerSuccess + 1"><i class="fi-check"></i> {{autoLowerSuccess}}</button>
+          </div>
+        </div>
+        
+        <div class="auto-divs low-div text-center">
+          <div class="auto-labels"><em>Move Forward</em></div>
+            <div class="switch">
+                <input type="checkbox" ng-model="moveForward" ng-true-value="1" ng-false-value="0">
+                <label><i class="fi-check"></i></label>
+            </div>
+        </div>
+        
+      </div>
+      <!-- End Auto Pannel -->
+    </div><!-- /small-6 -->
+  </div><!-- /row -->
+  
+  <div class="row show-hide" ng-show="showTele">
+    <div class="small-12 columns no-padding">
+      <!-- Begin Pre-Game Pannel -->
+      <div class="panel callout small-padding">
+      
+        <h6>Teleop</h6>
+        
+        <!-- Upper labels and minus -->
+        <div class="row">
+          <div class="small-6 columns no-padding text-center">
+            <button type="button" class="button tiny alert small-minus-button" ng-click="teleTopFail = checkNegative(teleTopFail)"><i class="fi-minus"></i></button> <span class="label">{{teleTopFail}}</span> Fail
+          </div>
+          <div class="small-6 columns no-padding text-center">
+            Success <span class="label">{{teleTopSuccess}}</span> <button type="button" class="button tiny alert small-minus-button" ng-click="teleTopSuccess = checkNegative(teleTopSuccess)"><i class="fi-minus"></i></button>
+          </div>
+        </div>
+        
+        <!-- Upper images and calls to action -->
+        <div class="row">
+          <div class="small-6 columns no-padding text-center top-col" ng-click="teleTopFail = teleTopFail + 1">
+            <span class="top-fail-label"><i class="fi-x"></i> Fail</span>
+            <img class="right top-goal-pic" border="0" src="images/top.png" alt="Top Goal" />
+          </div>
+          <div class="small-6 columns no-padding text-center top-col" ng-click="teleTopSuccess = teleTopSuccess + 1">
+            <span class="top-success-label"><i class="fi-check"></i> Success</span>
+            <img class="flip-horizontal left top-goal-pic" border="0" src="images/top.png" alt="Top Goal" />
+          </div>
+        </div>
+        
+        <!-- Lower images and calls to action -->
+        <div class="row">
+          <div class="small-2 columns no-padding low-col text-center" ng-click="teleLowerFail = teleLowerFail + 1">
+            <img border="0" class="lower-goal-pic" src="images/lower.png" alt="Top Goal" />
+            <span class="low-fail-label"><i class="fi-x"></i></span>
+          </div>
+          
+          <div class="small-8 columns no-padding text-center">
+            <div class="row">
+              <div class="medium-6 columns no-padding text-center">
+                <div class="pass">
+            	  <span class="icons"><i class="fi-social-dribbble"></i> <i class="fi-fast-forward"></i> </span>
+                  <span class="pass-label"><em>Pass</em></span>
+                  <div>
+                    <button type="button" class="button tiny alert small-margin-bottom thin-button" ng-click="telePassFail = telePassFail + 1"><i class="fi-x"></i> {{telePassFail}}</button>
+                    <button type="button" class="button tiny alert small-margin-bottom thin-button-middles" ng-click="telePassFail = checkNegative(telePassFail)">-</button>
+                    <button type="button" class="button tiny small-margin-bottom thin-button" ng-click="telePassSuccess = telePassSuccess + 1"><i class="fi-check"></i> {{telePassSuccess}}</button>
+                    <button type="button" class="button tiny small-margin-bottom thin-button-middles" ng-click="telePassSuccess = checkNegative(telePassSuccess)">-</button>
+                  </div>
+                </div>
+              </div><!-- /col-6 -->
+              
+              <div class="medium-6 columns no-padding text-center">
+                <div class="pass">
+            	  <span class="icons"><i class="fi-social-dribbble"></i> <i class="fi-rewind"></i> </span>
+                  <span class="pass-label"><em>Receive</em></span>
+                  <div>
+                    <button type="button" class="button tiny alert small-margin-bottom thin-button" ng-click="teleReceiveFail = teleReceiveFail + 1"><i class="fi-x"></i> {{teleReceiveFail}}</button>
+                    <button type="button" class="button tiny alert small-margin-bottom thin-button-middles" ng-click="teleReceiveFail = checkNegative(teleReceiveFail)">-</button>
+                    <button type="button" class="button tiny small-margin-bottom thin-button" ng-click="teleReceiveSuccess = teleReceiveSuccess + 1"><i class="fi-check"></i> {{teleReceiveSuccess}}</button>
+                    <button type="button" class="button tiny small-margin-bottom thin-button-middles" ng-click="teleReceiveSuccess = checkNegative(teleReceiveSuccess)">-</button>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /row -->
+            
+            <div class="row">
+              <div class="medium-6 columns no-padding text-center">
+                <div class="pass">
+            	  <span class="icons"><i class="fi-social-dribbble"></i> <i class="fi-arrow-up"></i> </span>
+                  <span class="pass-label"><em>Truss Throw</em></span>
+                  <div>
+                    <button type="button" class="button tiny alert small-margin-bottom thin-button" ng-click="teleThrowFail = teleThrowFail + 1"><i class="fi-x"></i> {{teleThrowFail}}</button>
+                    <button type="button" class="button tiny alert small-margin-bottom thin-button-middles" ng-click="teleThrowFail = checkNegative(teleThrowFail)">-</button>
+                    <button type="button" class="button tiny small-margin-bottom thin-button" ng-click="teleThrowSuccess = teleThrowSuccess + 1"><i class="fi-check"></i> {{teleThrowSuccess}}</button>
+                    <button type="button" class="button tiny small-margin-bottom thin-button-middles" ng-click="teleThrowSuccess = checkNegative(teleThrowSuccess)">-</button>
+                  </div>
+                </div>
+              </div><!-- /col-6 -->
+              
+              <div class="medium-6 columns no-padding text-center">
+                <div class="pass">
+            	  <span class="icons"><i class="fi-social-dribbble"></i> <i class="fi-arrow-down"></i> </span>
+                  <span class="pass-label"><em>Truss Catch</em></span>
+                  <div>
+                    <button type="button" class="button tiny alert small-margin-bottom thin-button" ng-click="teleCatchFail = teleCatchFail + 1"><i class="fi-x"></i> {{teleCatchFail}}</button>
+                    <button type="button" class="button tiny alert small-margin-bottom thin-button-middles" ng-click="teleCatchFail = checkNegative(teleCatchFail)">-</button>
+                    <button type="button" class="button tiny small-margin-bottom thin-button" ng-click="teleCatchSuccess = teleCatchSuccess + 1"><i class="fi-check"></i> {{teleCatchSuccess}}</button>
+                    <button type="button" class="button tiny small-margin-bottom thin-button-middles" ng-click="teleCatchSuccess = checkNegative(teleCatchSuccess)">-</button>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /row -->
+            
+            <!-- Ball Blocked -->
+            <div class="row">
+              <div class="small-3 columns no-padding">
+                &nbsp;
+              </div>
+              <div class="small-6 columns no-padding">
+                <div class="row">
+                  <div class="small-10 columns no-padding">
+            	    <button type="button" class="button tiny alert expand blocked-button" ng-click="ballsBlocked = ballsBlocked + 1"><i class="fi-shield"></i> Ball Blocked {{ballsBlocked}}</button>
+                  </div>
+                  <div class="small-2 columns no-padding">
+                    <button type="button" class="button tiny alert blocked-minus" ng-click="ballsBlocked = checkNegative(ballsBlocked)"><i class="fi-minus"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="small-3 columns no-padding">
+                &nbsp;
+              </div>
+            </div>
+            
+          </div>
+          
+          <div class="small-2 columns no-padding low-col text-center" ng-click="teleLowerSuccess = teleLowerSuccess + 1">
+            <img border="0" class="lower-goal-pic" src="images/lower.png" alt="Top Goal" />
+            <span class="low-success-label"><i class="fi-check"></i></span>
+          </div>
+        </div>
+        
+        <!-- Counters for Lower Fails and Successes -->
+        <div class="row">
+          <div class="small-3 columns no-padding low-col">
+            <div class="low-goal-counter low-goal-counter-left"><span class="label">{{teleLowerFail}}</span> <button type="button" class="button tiny alert small-minus-button" ng-click="teleLowerFail = checkNegative(teleLowerFail)"><i class="fi-minus"></i></button></div>
+          </div>
+          
+          <div class="small-6 columns no-padding">
+            &nbsp;
+          </div>
+          
+          <div class="small-3 columns no-padding low-col">
+            <div class="low-goal-counter low-goal-counter-right"><button type="button" class="button tiny alert small-minus-button" ng-click="teleLowerSuccess = checkNegative(teleLowerSuccess)"><i class="fi-minus"></i></button> <span class="label">{{teleLowerSuccess}}</span></div>
+          </div>
+        </div>
+        
+      </div><!-- /pannel -->
+    </div><!-- /small-12 -->
+  </div><!-- /row -->
+  
+  <div class="row show-hide" ng-show="showNotes">
+    <div class="small-12 columns no-padding">
+      <!-- Begin Pre-Game Pannel -->
+      <div class="panel callout small-padding">
+      
+        <h6>Round Review</h6>
+        
+        <div>
+          <h4><small>So, how'd it go?</small></h4>
+          <button type="button" class="button tiny" ng-click="notes = notes + 'offensive, '"><i class="fi-asterisk"></i> Offensive Player</button>
+          <button type="button" class="button tiny" ng-click="notes = notes + 'defensive, '"><i class="fi-watch"></i> Defensive Player</button>
+          <button type="button" class="button tiny success" ng-click="notes = notes + 'mvp, '"><i class="fi-crown"></i> Most Valuable Player</button>
+          <button type="button" class="button tiny alert" ng-click="notes = notes + 'absent, '">? No-Show</button>
+          <button type="button" class="button tiny alert" ng-click="notes = notes + 'boring, '"><i class="fi-clock"></i> Boring Play</button>
+          <button type="button" class="button tiny alert" ng-click="notes = notes + 'doa, '"><i class="fi-skull"></i> Dead on Arrival</button>
+          <textarea id="notesBox" name="notes" placeholder="How did your team perform?" ng-model="notes"></textarea>
+          <button type="button" class="button tiny secondary small-minus-button" ng-click="notes = ''">Clear</button>
+        </div>
+        <br />
+        <!--<input type="text" id="redScore" name="redScore" placeholder="Final score for your alliance" ng-model="finalScore">-->
+        
+      </div><!-- /pannel -->
+    </div><!-- /small-12 -->
+  </div><!-- /row -->
+  <div class="row">
+    <div class="small-12 columns no-padding">
+      <button type="button" class="button tiny left" ng-click="goBackScene()" ng-show="!showPre"><i class="fi-arrow-left"></i> Back</button>
+  	  <button type="button" class="button tiny right" ng-click="goToNextScene()" ng-show="!showNotes">Next <i class="fi-arrow-right"></i></button>
+      
+      <ul class="button-group right" ng-show="showNotes">
+        <li><button type="button" class="button tiny right" ng-click="saveScore('done')">Done <i class="fi-home"></i></button></li>
+        <li><button type="button" class="button tiny right" ng-click="saveScore('next')">Next Round <i class="fi-arrow-right"></i></button></li>
+      </ul>
+    </div>
+  </div>
+  
+  
+</form>

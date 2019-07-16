@@ -1,0 +1,86 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Foundation | Welcome</title>
+<link rel="stylesheet" href="css/foundation.css" />
+<link rel="stylesheet" href="home.css" />
+<script src="js/vendor/modernizr.js"></script>
+</head>
+<body>
+<div class="off-canvas-wrap docs-wrap">
+  <div class="inner-wrap">
+    <nav class="top-bar" data-topbar>
+      <section class="left-small"> <a class="left-off-canvas-toggle menu-icon" ><span></span></a> </section>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">Thunderstorm</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+      </ul>
+      <section class="top-bar-section"> 
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="has-dropdown"> <a href="#">kylekyle12</a>
+            <ul class="dropdown">
+              <li><a href="#">Account Details</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+        
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li><a href="#">Dashboard</a></li>
+          <li class="active"><a href="#">Data Edit</a></li>
+        </ul>
+      </section>
+    </nav>
+    
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li>
+          <label>Data Edit Pages</label>
+        </li>
+        <li ng-class="{active:isActive('/round')}"><a href="#/round">Round</a></li>
+        <li ng-class="{active:isActive('/score')}"><a href="#/score">Score</a></li>
+        <li ng-class="{active:isActive('/team')}"><a href="#/team">Team</a></li>
+      </ul>
+    </aside>
+    
+    <section class="main-section">
+      <div class="row">
+        <div class="large-12 columns"> <br/>
+          <h4>Data Edit - Round</h4>
+          <p>Bro ipsum dolor sit amet brain bucket laps death cookies epic, death cookies sucker hole grab grom taco. Wheelie drop first tracks carve, death cookies pow core shot bump backside hardtail clipless bear trap laps. Free ride bail brain bucket white room acro. Single track pow wheelie lid first tracks brain bucket berm bomb switch Whistler drop glades huckfest trail swag manny. Bunny slope ski bum laps, dope skinny chain suck yard sale backside steed carve epic gorby white room.</p>
+          <p>Gondy deck moguls, 180 endo rail fully fatty grunt snake bite cruiser acro bomb hole bump stunt. Face plant back country hurl carcass ollie stoked lid. Frozen chicken heads rip bowl trucks noodle park wack big ring. Dust on crust avie huck hammer north shore 360. Cork butter 180, clipless chowder clean drop steed bail betty reverse camber T-bar bowl. Dope bail misty gondy gapers 180 newschooler dust on crust grind fully tele white room euro.</p>
+          <p>Spin ride around giblets face plant, phat method corn berm rock roll 180 rigid free ride stoked grind epic. Bomb hole yard sale caballerial 360 ACL huck clipless 180 death cookies grom manny hammerhead brain bucket punter. Bonk pinner park rat T-bar, gnar Ski gondy over the bars white room Whistler freshies Whistler clipless butter. Heli piste phat shred chowder. Rip ripper wheels, huckfest euro Skate taco nose press noodle shuttle couloir stoked apres. Poaching cornice titanium pow bail bonk, clipless brain bucket beater skinny avie hammerhead.</p>
+          <p>Laps hurl carcass laps grip tape sucker hole. Twin tip wheels hurl carcass 180, couloir hot dogging bonk japan air rigid corn shuttle greasy dirtbag back country piste. Titanium giblets hardtail McTwist brain bucket. Gondy death cookies grip tape bowl, chowder wheelie hardtail ride</p>
+        </div>
+      </div>
+    </section>
+    <a class="exit-off-canvas"></a> </div>
+</div>
+<script src="js/vendor/jquery.js"></script> 
+<script src="js/foundation.min.js"></script> 
+<script src="js/vendor/fastclick.js"></script> 
+<script>
+  $(document).foundation();
+  $(document).ready(function () {
+	if($(document).height()>=$(window).height()){
+      $(".inner-wrap, .left-off-canvas-menu, .main-section").height($(document).height() - $(".fixed").height());
+	} else {
+	  $(".inner-wrap, .left-off-canvas-menu, .main-section").height($(window).height() - $(".fixed").height());
+	}
+  });
+  $(window).resize(function() {
+  	if($(document).height()>=$(window).height()){
+      $(".inner-wrap, .left-off-canvas-menu, .main-section").height($(document).height() - $(".fixed").height());
+	} else {
+	  $(".inner-wrap, .left-off-canvas-menu, .main-section").height($(window).height() - $(".fixed").height());
+	}
+  });
+</script>
+</body>
+</html>

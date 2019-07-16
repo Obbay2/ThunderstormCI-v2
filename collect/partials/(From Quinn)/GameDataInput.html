@@ -1,0 +1,61 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Team Data Input</title>
+<link rel="stylesheet" href="css/foundation.css" />
+<link rel="stylesheet" href="foundation-icons/foundation-icons.css" />
+<script src="js/vendor/modernizr.js"></script>
+</head>
+<body>
+<div class="row">
+  <div class="large-12 columns">
+    <h1>Game Data Input</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="medium-8 columns">
+    <div class="callout panel"> <strong> Name of Game: <strong>
+      <div style="margin-top:20px">
+        <p>
+          <input type="text" placeholder="#" name="name" maxlength="64" />
+        </p>
+      </div>
+      <strong> Year of Game: <strong>
+      <div style="margin-top:20px">
+        <p>
+          <input type="text" placeholder="#" name="year" maxlength="4" />
+        </p>
+      </div>
+      <strong> Game Championship Location: <strong>
+      <div style="margin-top:20px">
+        <p>
+          <input type="text" placeholder="#" name="championship_location" maxlength="128" />
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="medium-4 columns">
+    <h5> <i class="fi-clipboard-notes"></i> Add any notes you have here:</h5>
+    <form>
+      <div class="row">
+        <div class="medium-12 columns">
+          <textarea placeholder="Notes" name="notes" maxlength="512"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="medium-8 columns"> <a href="http://foundation.zurb.com/docs/" class="button small secondary left"> Cancel </a>
+    <button type="submit" class="button small right"> Submit </button>
+  </div>
+</div>
+<script src="js/vendor/jquery.js"></script> 
+<script src="js/foundation.min.js"></script> 
+<script>
+      $(document).foundation();
+    </script>
+</body>
+</html>

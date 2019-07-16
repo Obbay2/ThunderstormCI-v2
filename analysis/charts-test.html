@@ -1,0 +1,96 @@
+<!DOCTYPE>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/Chart.js"></script>
+
+</head>
+
+<body>
+<canvas id="something" style="height:800px;display:none"></canvas>
+<canvas id="else" style="height:800px;display:none"></canvas>
+<script>
+window.setTimeout(function(){
+    showGraph("something");
+  },500);
+  window.setTimeout(function(){
+    showGraph2("else");
+  },800);
+var data = [
+    {
+        value: 20,
+        color:"#637b85"
+    },
+    {
+        value : 30,
+        color : "#2c9c69"
+    },
+    {
+        value : 40,
+        color : "#dbba34"
+    },
+    {
+        value : 10,
+        color : "#c62f29"
+    }
+ 
+];
+var data2 = {
+	labels : ["January","February","March","April","May","June","July"],
+	datasets : [
+		{
+			fillColor : "rgba(220,220,220,0.5)",
+			strokeColor : "rgba(220,220,220,1)",
+			pointColor : "rgba(220,220,220,1)",
+			pointStrokeColor : "#fff",
+			data : [65,59,90,81,56,55,40]
+		},
+		{
+			fillColor : "rgba(151,187,205,0.5)",
+			strokeColor : "rgba(151,187,205,1)",
+			pointColor : "rgba(151,187,205,1)",
+			pointStrokeColor : "#fff",
+			data : [28,48,40,19,96,27,100]
+		}
+	]
+}
+function showGraph(id) {
+$( "#something" ).fadeIn( 1000 );
+var canvas = document.getElementById(id);
+var ctx = canvas.getContext("2d");
+new Chart(ctx).Doughnut(data, {
+	animation : true,
+	
+	//Number - Amount of animation steps
+	animationSteps : 100,
+	
+	//String - Animation easing effect
+	animationEasing : "easeOutElastic",
+	
+	//Boolean - Whether we animate the rotation of the Pie
+	animateRotate : true,
+
+	//Boolean - Whether we animate scaling the Pie from the centre
+	animateScale : false
+});
+
+}
+function showGraph2(id) {
+$( "#else" ).fadeIn( 1000 );
+var canvas = document.getElementById(id);
+var ctx = canvas.getContext("2d");
+new Chart(ctx).Line(data2, {
+	animation : true,
+	
+	//Number - Amount of animation steps
+	animationSteps : 100
+	
+	//String - Animation easing effect
+	//animationEasing : "easeOutElastic"
+});
+
+}
+</script>
+</body>
+
+</html
